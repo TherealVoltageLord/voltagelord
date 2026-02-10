@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: voltage-portfolio
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: GITHUB_TOKEN
+        sync: false
+    healthCheckPath: /api/health
+    autoDeploy: true
