@@ -1,0 +1,20 @@
+{
+  "name": "voltage-portfolio",
+  "version": "1.0.0",
+  "description": "Nigerian Developer Portfolio",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "sqlite3": "^5.1.6",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
