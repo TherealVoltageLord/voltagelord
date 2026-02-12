@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TherealVoltageLord - Nigerian Full-Stack Developer building innovative web solutions with modern technologies">
+<meta name="description" content="TherealVoltageLord - Nigerian Full-Stack Developer creating innovative web solutions with modern technologies">
 <meta name="keywords" content="Nigerian developer, full-stack developer, web development, JavaScript, Python, React, Node.js, tech portfolio, Lagos developer">
 <meta name="author" content="TherealVoltageLord">
-<title>VoltageLord | Nigerian Developer Portfolio</title>
+<title>VoltageLord | Nigerian Full-Stack Developer</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <style>
   :root {
     --primary-green: #008753;
@@ -41,7 +42,6 @@
     overflow-x: hidden;
     line-height: 1.6;
     min-height: 100vh;
-    position: relative;
   }
 
   #particleCanvas {
@@ -219,6 +219,11 @@
     max-width: 500px;
   }
 
+  .typing-text {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
   .cta-buttons {
     display: flex;
     gap: 1rem;
@@ -263,9 +268,9 @@
     border-color: var(--primary-green);
   }
 
-  .hero-stats {
+  .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
   }
@@ -324,53 +329,62 @@
     border-radius: 2px;
   }
 
-  .tech-grid {
+  .tech-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
     margin-top: 2rem;
   }
 
-  .tech-card {
-    border-radius: 16px;
+  .tech-category {
+    border-radius: 20px;
     padding: 2rem;
-    text-align: center;
-    transition: var(--transition);
+  }
+
+  .tech-category h3 {
+    font-size: 1.5rem;
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .tech-list {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
   }
 
-  .tech-card:hover {
-    transform: translateY(-8px);
+  .tech-item {
     background: rgba(0, 135, 83, 0.1);
-    border-color: var(--primary-green);
-  }
-
-  .tech-icon {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: rgba(0, 135, 83, 0.15);
+    border: 1px solid rgba(0, 135, 83, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: var(--primary-green);
-    margin-bottom: 1rem;
+    gap: 0.75rem;
     transition: var(--transition);
   }
 
-  .tech-card:hover .tech-icon {
-    background: rgba(0, 135, 83, 0.25);
-    transform: scale(1.1);
+  .tech-item:hover {
+    background: rgba(0, 135, 83, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .tech-icon {
+    font-size: 1.2rem;
+    color: var(--primary-green);
   }
 
   .tech-name {
-    font-weight: 600;
+    font-weight: 500;
     color: var(--white);
-    font-size: 1.2rem;
+  }
+
+  .skill-level {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: var(--gold);
+    font-weight: 600;
   }
 
   .projects-grid {
@@ -457,6 +471,52 @@
     background: var(--primary-green);
   }
 
+  .github-activity {
+    border-radius: 20px;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .heatmap-container {
+    margin-top: 2rem;
+  }
+
+  .heatmap {
+    display: grid;
+    grid-template-columns: repeat(52, 1fr);
+    gap: 3px;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  .heatmap-day {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+
+  .heatmap-day:hover {
+    transform: scale(1.3);
+  }
+
+  .heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .contact-section {
     border-radius: 24px;
     padding: 4rem;
@@ -512,40 +572,123 @@
     font-size: 1rem;
   }
 
-  .contact-info {
+  .contact-form {
     border-radius: 20px;
     padding: 2rem;
   }
 
-  .contact-info h3 {
-    color: var(--white);
-    font-size: 1.8rem;
+  .form-group {
     margin-bottom: 1.5rem;
-    font-family: 'Space Grotesk', sans-serif;
   }
 
-  .contact-detail {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 12px;
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
     transition: var(--transition);
   }
 
-  .contact-detail:hover {
-    background: rgba(255, 255, 255, 0.05);
+  .form-input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    background: rgba(0, 135, 83, 0.05);
   }
 
-  .contact-detail i {
+  textarea.form-input {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary-green), var(--green-light));
+    color: var(--white);
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 135, 83, 0.3);
+  }
+
+  .quotes-section {
+    border-radius: 20px;
+    padding: 3rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .quote-slider {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .swiper-slide {
+    padding: 2rem;
+  }
+
+  .quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .quote-author {
     color: var(--primary-green);
-    font-size: 1.2rem;
-    width: 24px;
+    font-weight: 600;
   }
 
-  .contact-detail span {
+  .visitor-stats {
+    border-radius: 20px;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .visitor-stat {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: rgba(0, 135, 83, 0.1);
+  }
+
+  .visitor-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .visitor-label {
     color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
   }
 
   .footer {
@@ -602,6 +745,30 @@
     transition: width 0.1s ease;
   }
 
+  .theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 135, 83, 0.3);
+    transition: var(--transition);
+  }
+
+  .theme-toggle:hover {
+    transform: scale(1.1);
+  }
+
   @media (max-width: 992px) {
     .hero-content {
       grid-template-columns: 1fr;
@@ -611,6 +778,10 @@
     
     .hero-text h1 {
       font-size: 3rem;
+    }
+    
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
     
     .contact-methods {
@@ -648,10 +819,6 @@
       font-size: 2.5rem;
     }
     
-    .hero-stats {
-      grid-template-columns: 1fr;
-    }
-    
     .projects-grid {
       grid-template-columns: 1fr;
     }
@@ -675,9 +842,39 @@
       flex-direction: column;
     }
     
-    .tech-grid {
+    .stats-grid {
       grid-template-columns: 1fr;
     }
+    
+    .tech-section {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 135, 83, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-green);
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #1e293b 25%, #2d3748 50%, #1e293b 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+  }
+
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 </style>
 </head>
@@ -685,6 +882,9 @@
 
 <div class="scroll-progress"></div>
 <canvas id="particleCanvas"></canvas>
+<button class="theme-toggle" id="themeToggle">
+  <i class="fas fa-moon"></i>
+</button>
 
 <nav class="nav-wrapper glass">
   <div class="nav-content">
@@ -716,6 +916,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a href="#github" class="nav-link">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="#contact" class="nav-link">
           <i class="fas fa-envelope"></i>
           <span>Contact</span>
@@ -729,9 +935,10 @@
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
-        <h1>Hello, welcome to my portfolio — I’m Thereal_VoltageLord aka Odunayo Ayinla</h1>
-<h2>A Nigerian Developer Turning Curiosity Into Code That Ships</h2>
-<p>Self-driven builder obsessed with growth, real-world impact, and breaking limits through code. I design, build, and refine scalable systems with intent — learning fast, improving daily, and pushing past average.</p>
+        <h1>Full-Stack Developer</h1>
+        <h2>Building Digital Solutions with <span class="typing-text" id="typingText"></span></h2>
+        <p>Nigerian developer passionate about creating scalable web applications, clean architecture, and exceptional user experiences using modern technologies.</p>
+        
         <div class="cta-buttons">
           <a href="#projects" class="btn btn-primary">
             <i class="fas fa-code-branch"></i>
@@ -743,18 +950,22 @@
           </a>
         </div>
 
-        <div class="hero-stats">
+        <div class="stats-grid">
           <div class="stat-card glass">
             <span class="stat-number" id="followers">0</span>
             <span class="stat-label">GitHub Followers</span>
           </div>
           <div class="stat-card glass">
-            <span class="stat-number" id="following">0</span>
-            <span class="stat-label">Following</span>
+            <span class="stat-number" id="repos">0</span>
+            <span class="stat-label">Public Repos</span>
           </div>
           <div class="stat-card glass">
-            <span class="stat-number" id="profileViews">0</span>
-            <span class="stat-label">Profile Views</span>
+            <span class="stat-number" id="stars">0</span>
+            <span class="stat-label">Total Stars</span>
+          </div>
+          <div class="stat-card glass">
+            <span class="stat-number" id="visitors">0</span>
+            <span class="stat-label">Page Views</span>
           </div>
         </div>
       </div>
@@ -764,43 +975,58 @@
 
 <section class="section" id="skills">
   <div class="container">
-    <h2 class="section-title">Technical Expertise</h2>
-    <div class="tech-grid">
-      <div class="tech-card glass">
-        <div class="tech-icon">
-          <i class="fab fa-js-square"></i>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="tech-section">
+      <div class="tech-category glass">
+        <h3>Frontend</h3>
+        <div class="tech-list">
+          <div class="tech-item">
+            <i class="fab fa-js-square tech-icon"></i>
+            <span class="tech-name">JavaScript</span>
+            <span class="skill-level">Expert</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-react tech-icon"></i>
+            <span class="tech-name">React</span>
+            <span class="skill-level">Advanced</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-html5 tech-icon"></i>
+            <span class="tech-name">HTML5</span>
+            <span class="skill-level">Expert</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-css3-alt tech-icon"></i>
+            <span class="tech-name">CSS3</span>
+            <span class="skill-level">Expert</span>
+          </div>
         </div>
-        <span class="tech-name">JavaScript</span>
       </div>
-      <div class="tech-card glass">
-        <div class="tech-icon">
-          <i class="fab fa-python"></i>
+      
+      <div class="tech-category glass">
+        <h3>Backend</h3>
+        <div class="tech-list">
+          <div class="tech-item">
+            <i class="fab fa-node-js tech-icon"></i>
+            <span class="tech-name">Node.js</span>
+            <span class="skill-level">Advanced</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-python tech-icon"></i>
+            <span class="tech-name">Python</span>
+            <span class="skill-level">Intermediate</span>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-database tech-icon"></i>
+            <span class="tech-name">MongoDB</span>
+            <span class="skill-level">Intermediate</span>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-server tech-icon"></i>
+            <span class="tech-name">REST APIs</span>
+            <span class="skill-level">Advanced</span>
+          </div>
         </div>
-        <span class="tech-name">Python</span>
-      </div>
-      <div class="tech-card glass">
-        <div class="tech-icon">
-          <i class="fab fa-react"></i>
-        </div>
-        <span class="tech-name">React</span>
-      </div>
-      <div class="tech-card glass">
-        <div class="tech-icon">
-          <i class="fab fa-node-js"></i>
-        </div>
-        <span class="tech-name">Node.js</span>
-      </div>
-      <div class="tech-card glass">
-        <div class="tech-icon">
-          <i class="fas fa-database"></i>
-        </div>
-        <span class="tech-name">Databases</span>
-      </div>
-      <div class="tech-card glass">
-        <div class="tech-icon">
-          <i class="fab fa-github"></i>
-        </div>
-        <span class="tech-name">Git & GitHub</span>
       </div>
     </div>
   </div>
@@ -809,21 +1035,67 @@
 <section class="section" id="projects">
   <div class="container">
     <h2 class="section-title">Featured Projects</h2>
-    <div class="projects-grid" id="repoContainer">
-      <div class="project-card glass">
-        <div class="project-header">
-          <a href="https://github.com/TherealVoltageLord" target="_blank" class="project-title">Portfolio Platform</a>
-          <div class="project-stats">
-            <span><i class="fas fa-star"></i> Loading...</span>
-            <span><i class="fas fa-code-branch"></i> Loading...</span>
+    <div class="projects-grid" id="projectsContainer">
+      <div class="project-card glass skeleton" style="height: 250px;"></div>
+      <div class="project-card glass skeleton" style="height: 250px;"></div>
+      <div class="project-card glass skeleton" style="height: 250px;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="github">
+  <div class="container">
+    <h2 class="section-title">GitHub Activity</h2>
+    
+    <div class="github-activity glass">
+      <h3>Contribution Heatmap</h3>
+      <div class="heatmap-container" id="heatmapContainer">
+        <div class="heatmap" id="heatmap"></div>
+        <div class="heatmap-legend">
+          <div class="legend-item">
+            <div class="heatmap-day" style="background: #ebedf0;"></div>
+            <span>Less</span>
+          </div>
+          <div class="legend-item">
+            <div class="heatmap-day" style="background: #9be9a8;"></div>
+            <span>More</span>
           </div>
         </div>
-        <p class="project-description">Modern glassmorphic portfolio with dynamic animations and real-time data integration.</p>
-        <div class="project-tech">
-          <div class="project-language"></div>
-          <span>JavaScript</span>
-          <span style="margin-left: auto;">Active</span>
+      </div>
+    </div>
+
+    <div class="visitor-stats glass">
+      <h3>Visitor Statistics</h3>
+      <div class="stats-cards" id="visitorStats">
+        <div class="visitor-stat">
+          <div class="visitor-number" id="totalViews">0</div>
+          <div class="visitor-label">Total Views</div>
         </div>
+        <div class="visitor-stat">
+          <div class="visitor-number" id="uniqueVisitors">0</div>
+          <div class="visitor-label">Unique Visitors</div>
+        </div>
+        <div class="visitor-stat">
+          <div class="visitor-number" id="todayViews">0</div>
+          <div class="visitor-label">Today's Views</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="quotes">
+  <div class="container">
+    <h2 class="section-title">Developer Wisdom</h2>
+    <div class="quotes-section glass">
+      <div class="swiper quote-slider">
+        <div class="swiper-wrapper" id="quotesContainer">
+          <div class="swiper-slide">
+            <div class="quote">"First, solve the problem. Then, write the code."</div>
+            <div class="quote-author">- John Johnson</div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
   </div>
@@ -864,20 +1136,24 @@
           </a>
         </div>
         
-        <div class="contact-info">
-          <h3>Connect With Me</h3>
-          <div class="contact-detail">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Based in Nigeria</span>
-          </div>
-          <div class="contact-detail">
-            <i class="fas fa-clock"></i>
-            <span>Available for opportunities</span>
-          </div>
-          <div class="contact-detail">
-            <i class="fas fa-code"></i>
-            <span>Full-Stack Development</span>
-          </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-input" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-input" placeholder="Your message..." required></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -897,15 +1173,16 @@
         <a href="https://t.me/thereal_Voltagelord" target="_blank" class="social-link">
           <i class="fab fa-telegram"></i>
         </a>
-        <a href="mailto:odunayoayinla23@gmail.com" class="social-link">
-          <i class="fas fa-envelope"></i>
+        <a href="https://whatsapp.com/channel/0029Vb6IVKB5a23uRnMxKt0m" target="_blank" class="social-link">
+          <i class="fab fa-whatsapp"></i>
         </a>
       </div>
-      <p class="copyright">&copy; <span id="currentYear"></span> VoltageLord. Nigerian Developer Portfolio.</p>
+      <p class="copyright">&copy; <span id="currentYear"></span> VoltageLord. Full-Stack Developer Portfolio.</p>
     </div>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 class ParticleSystem {
   constructor() {
@@ -924,10 +1201,7 @@ class ParticleSystem {
   init() {
     this.resize();
     window.addEventListener('resize', () => this.resize());
-    
-    // Create Nigerian-themed particles
     this.createParticles();
-    this.createNigerianShapes();
   }
 
   resize() {
@@ -936,7 +1210,7 @@ class ParticleSystem {
   }
 
   createParticles() {
-    const particleCount = Math.min(100, Math.floor(window.innerWidth * window.innerHeight / 15000));
+    const particleCount = Math.min(150, Math.floor(window.innerWidth * window.innerHeight / 10000));
     
     for (let i = 0; i < particleCount; i++) {
       this.particles.push({
@@ -945,32 +1219,12 @@ class ParticleSystem {
         size: Math.random() * 2 + 1,
         speedX: Math.random() * 0.5 - 0.25,
         speedY: Math.random() * 0.5 - 0.25,
-        color: Math.random() > 0.5 ? 'rgba(0, 135, 83, 0.8)' : 'rgba(255, 215, 0, 0.8)',
+        color: Math.random() > 0.7 ? 'rgba(0, 135, 83, 0.6)' : 
+               Math.random() > 0.4 ? 'rgba(255, 215, 0, 0.6)' : 
+               'rgba(255, 255, 255, 0.3)',
         orbitRadius: Math.random() * 50 + 20,
         orbitSpeed: Math.random() * 0.02 + 0.01,
         orbitAngle: Math.random() * Math.PI * 2
-      });
-    }
-  }
-
-  createNigerianShapes() {
-    // Create Nigerian-themed floating shapes (green, white, gold)
-    for (let i = 0; i < 20; i++) {
-      const size = Math.random() * 30 + 20;
-      this.shapes.push({
-        x: Math.random() * this.canvas.width,
-        y: Math.random() * this.canvas.height,
-        size: size,
-        color: i % 3 === 0 ? 'rgba(0, 135, 83, 0.4)' : 
-               i % 3 === 1 ? 'rgba(255, 255, 255, 0.2)' : 
-               'rgba(255, 215, 0, 0.4)',
-        speedX: Math.random() * 0.3 - 0.15,
-        speedY: Math.random() * 0.3 - 0.15,
-        rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: Math.random() * 0.02 - 0.01,
-        type: Math.floor(Math.random() * 3), // 0: circle, 1: triangle, 2: diamond
-        pulseSpeed: Math.random() * 0.02 + 0.01,
-        pulseSize: size
       });
     }
   }
@@ -980,21 +1234,14 @@ class ParticleSystem {
       this.mouse.x = e.clientX;
       this.mouse.y = e.clientY;
     });
-
-    window.addEventListener('scroll', () => {
-      // Add subtle movement based on scroll
-      this.scrollY = window.scrollY;
-    });
   }
 
   drawParticles() {
     this.particles.forEach(particle => {
-      // Update particle position with orbit
       particle.orbitAngle += particle.orbitSpeed;
       particle.x += Math.cos(particle.orbitAngle) * particle.orbitRadius * 0.1;
       particle.y += Math.sin(particle.orbitAngle) * particle.orbitRadius * 0.1;
       
-      // Add mouse interaction
       const dx = this.mouse.x - particle.x;
       const dy = this.mouse.y - particle.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
@@ -1006,17 +1253,14 @@ class ParticleSystem {
         particle.y -= Math.sin(angle) * force * 2;
       }
       
-      // Boundary check
       if (particle.x < 0 || particle.x > this.canvas.width) particle.speedX *= -1;
       if (particle.y < 0 || particle.y > this.canvas.height) particle.speedY *= -1;
       
-      // Draw particle
       this.ctx.beginPath();
       this.ctx.fillStyle = particle.color;
       this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
       this.ctx.fill();
       
-      // Draw connections
       this.particles.forEach(otherParticle => {
         const dx = particle.x - otherParticle.x;
         const dy = particle.y - otherParticle.y;
@@ -1034,92 +1278,12 @@ class ParticleSystem {
     });
   }
 
-  drawShapes() {
-    this.shapes.forEach(shape => {
-      // Update shape position
-      shape.x += shape.speedX;
-      shape.y += shape.speedY;
-      shape.rotation += shape.rotationSpeed;
-      
-      // Pulse effect
-      const pulse = Math.sin(this.time * shape.pulseSpeed) * 5;
-      const currentSize = shape.pulseSize + pulse;
-      
-      // Boundary check with bounce
-      if (shape.x < 0 || shape.x > this.canvas.width) shape.speedX *= -1;
-      if (shape.y < 0 || shape.y > this.canvas.height) shape.speedY *= -1;
-      
-      this.ctx.save();
-      this.ctx.translate(shape.x, shape.y);
-      this.ctx.rotate(shape.rotation);
-      
-      this.ctx.fillStyle = shape.color;
-      this.ctx.beginPath();
-      
-      switch(shape.type) {
-        case 0: // Circle
-          this.ctx.arc(0, 0, currentSize, 0, Math.PI * 2);
-          break;
-        case 1: // Triangle (Nigerian symbol)
-          for (let i = 0; i < 3; i++) {
-            const angle = (i * Math.PI * 2) / 3 - Math.PI / 2;
-            const x = Math.cos(angle) * currentSize;
-            const y = Math.sin(angle) * currentSize;
-            if (i === 0) this.ctx.moveTo(x, y);
-            else this.ctx.lineTo(x, y);
-          }
-          break;
-        case 2: // Diamond (representing value)
-          this.ctx.moveTo(0, -currentSize);
-          this.ctx.lineTo(currentSize, 0);
-          this.ctx.lineTo(0, currentSize);
-          this.ctx.lineTo(-currentSize, 0);
-          break;
-      }
-      
-      this.ctx.closePath();
-      this.ctx.fill();
-      
-      // Add subtle outline for some shapes
-      if (Math.random() > 0.5) {
-        this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-        this.ctx.lineWidth = 1;
-        this.ctx.stroke();
-      }
-      
-      this.ctx.restore();
-    });
-  }
-
-  drawNigerianPatterns() {
-    // Draw subtle Nigerian patterns in background
-    const patternSize = 200;
-    const offset = this.time * 0.01;
-    
-    for (let x = -patternSize; x < this.canvas.width + patternSize; x += patternSize) {
-      for (let y = -patternSize; y < this.canvas.height + patternSize; y += patternSize) {
-        const adjustedX = x + Math.sin(y * 0.01 + offset) * 20;
-        const adjustedY = y + Math.cos(x * 0.01 + offset) * 20;
-        
-        // Draw subtle Nigerian-inspired pattern
-        this.ctx.beginPath();
-        this.ctx.arc(adjustedX, adjustedY, 2, 0, Math.PI * 2);
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
-        this.ctx.fill();
-      }
-    }
-  }
-
   animate() {
     this.time += 0.1;
     
-    // Clear with subtle fade effect for trails
     this.ctx.fillStyle = 'rgba(10, 25, 47, 0.05)';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     
-    // Draw all elements
-    this.drawNigerianPatterns();
-    this.drawShapes();
     this.drawParticles();
     
     requestAnimationFrame(() => this.animate());
@@ -1129,7 +1293,6 @@ class ParticleSystem {
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('currentYear').textContent = new Date().getFullYear();
   
-  // Initialize particle system
   new ParticleSystem();
   
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1197,54 +1360,177 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  loadStats();
-});
-
-async function loadStats() {
-  try {
-    const followersRes = await fetch('/api/github/followers').then(r => r.json());
-    document.getElementById('followers').textContent = followersRes.followers || '0';
-    document.getElementById('following').textContent = followersRes.following || '0';
+  const typingText = document.getElementById('typingText');
+  const texts = ['JavaScript', 'React', 'Node.js', 'Python', 'MongoDB'];
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  
+  function typeText() {
+    const currentText = texts[textIndex];
     
-    const visitorsRes = await fetch('/api/visitors').then(r => r.json());
-    document.getElementById('profileViews').textContent = visitorsRes.totalViews || '0';
-    
-    const reposRes = await fetch('/api/github/repos').then(r => r.json());
-    const repoContainer = document.getElementById('repoContainer');
-    
-    if(reposRes && reposRes.length > 0) {
-      const sortedRepos = reposRes
-        .sort((a, b) => b.stargazers_count - a.stargazers_count)
-        .slice(0, 6);
-      
-      repoContainer.innerHTML = '';
-      
-      sortedRepos.forEach(repo => {
-        const card = document.createElement('div');
-        card.className = 'project-card glass';
-        card.innerHTML = `
-          <div class="project-header">
-            <a href="${repo.html_url}" target="_blank" class="project-title">${repo.name}</a>
-            <div class="project-stats">
-              <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
-              <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
-            </div>
-          </div>
-          <p class="project-description">${repo.description || 'No description provided'}</p>
-          <div class="project-tech">
-            <div class="project-language" style="background: ${repo.language ? '#008753' : '#ffd700'}"></div>
-            <span>${repo.language || 'Multi-language'}</span>
-            <span style="margin-left: auto;">${new Date(repo.updated_at).toLocaleDateString()}</span>
-          </div>
-        `;
-        repoContainer.appendChild(card);
-      });
+    if (isDeleting) {
+      typingText.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typingText.textContent = currentText.substring(0, charIndex + 1);
+      charIndex++;
     }
     
-  } catch(err) {
+    if (!isDeleting && charIndex === currentText.length) {
+      setTimeout(() => isDeleting = true, 1500);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      textIndex = (textIndex + 1) % texts.length;
+    }
+    
+    setTimeout(typeText, isDeleting ? 50 : 100);
+  }
+  
+  setTimeout(typeText, 1000);
+  
+  const swiper = new Swiper('.quote-slider', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+  
+  loadAllData();
+});
+
+async function loadAllData() {
+  try {
+    const [githubStats, reposData, visitorsData, quotesData] = await Promise.all([
+      fetch('/api/github/stats').then(r => r.json()),
+      fetch('/api/github/repos').then(r => r.json()),
+      fetch('/api/visitors').then(r => r.json()),
+      fetch('/api/quotes?count=5').then(r => r.json())
+    ]);
+    
+    updateGitHubStats(githubStats);
+    updateProjects(reposData.repos || []);
+    updateVisitorStats(visitorsData);
+    updateQuotes(quotesData);
+    
+  } catch (err) {
     console.error('Error loading data:', err);
   }
 }
+
+function updateGitHubStats(stats) {
+  if (stats.followers !== undefined) {
+    document.getElementById('followers').textContent = stats.followers;
+    document.getElementById('repos').textContent = stats.publicRepos || 0;
+    document.getElementById('stars').textContent = stats.totalStars || 0;
+  }
+}
+
+function updateProjects(repos) {
+  const container = document.getElementById('projectsContainer');
+  if (!repos.length) {
+    container.innerHTML = '<div class="project-card glass"><p>No projects found. Check GitHub for updates.</p></div>';
+    return;
+  }
+  
+  container.innerHTML = '';
+  
+  repos.forEach(repo => {
+    const card = document.createElement('div');
+    card.className = 'project-card glass';
+    card.innerHTML = `
+      <div class="project-header">
+        <a href="${repo.html_url}" target="_blank" class="project-title">${repo.name}</a>
+        <div class="project-stats">
+          <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
+          <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
+        </div>
+      </div>
+      <p class="project-description">${repo.description || 'No description provided'}</p>
+      <div class="project-tech">
+        ${repo.language ? `<div class="project-language" style="background: #008753"></div><span>${repo.language}</span>` : ''}
+        <span style="margin-left: auto;">Updated ${new Date(repo.updated_at).toLocaleDateString()}</span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function updateVisitorStats(data) {
+  document.getElementById('visitors').textContent = data.totalViews || 0;
+  document.getElementById('totalViews').textContent = data.totalViews || 0;
+  document.getElementById('uniqueVisitors').textContent = data.uniqueVisitors || 0;
+  document.getElementById('todayViews').textContent = Math.floor(data.totalViews / 10) || 0;
+}
+
+function updateQuotes(quotes) {
+  const container = document.getElementById('quotesContainer');
+  if (!quotes.length) return;
+  
+  container.innerHTML = '';
+  
+  quotes.forEach(quote => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = `
+      <div class="quote">"${quote}"</div>
+      <div class="quote-author">- Developer Wisdom</div>
+    `;
+    container.appendChild(slide);
+  });
+  
+  new Swiper('.quote-slider', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+}
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = {
+    name: this.querySelector('input[type="text"]').value,
+    email: this.querySelector('input[type="email"]').value,
+    message: this.querySelector('textarea').value
+  };
+  
+  alert('Message sent! I\'ll get back to you soon.');
+  this.reset();
+});
+
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+  themeToggle.innerHTML = document.body.classList.contains('light-mode') 
+    ? '<i class="fas fa-sun"></i>' 
+    : '<i class="fas fa-moon"></i>';
+  
+  if (document.body.classList.contains('light-mode')) {
+    document.documentElement.style.setProperty('--primary-green', '#00a86b');
+    document.documentElement.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.7)');
+    document.documentElement.style.setProperty('--glass-border', 'rgba(0, 0, 0, 0.1)');
+    document.body.style.background = 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%)';
+    document.body.style.color = '#333';
+  } else {
+    document.documentElement.style.setProperty('--primary-green', '#008753');
+    document.documentElement.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.08)');
+    document.documentElement.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.12)');
+    document.body.style.background = 'linear-gradient(135deg, #0a192f 0%, #0c2340 50%, #0a192f 100%)';
+    document.body.style.color = '#fff';
+  }
+});
 </script>
 </body>
-  </html>
+</html>
